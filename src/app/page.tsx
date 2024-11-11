@@ -1,22 +1,13 @@
 "use client";
 import Image from "next/image";
-import useSWR from "swr";
 import lightning from "../app/img/lightning.svg";
 import useWeatherData from "./hooks/useWeatherData";
 import useCityData from "./hooks/useCityData";
 import { LoadingContainer } from "./components/LoadingContainer";
 
 export default function Home() {
-  const {
-    data: weatherData,
-    error: weatherError,
-    isLoading: weatherLoading,
-  } = useWeatherData();
-  const {
-    data: cityData,
-    error: cityError,
-    isLoading: cityLoading,
-  } = useCityData();
+  const { data: weatherData, isLoading: weatherLoading } = useWeatherData();
+  const { isLoading: cityLoading } = useCityData();
 
   console.log(weatherData);
   return (
